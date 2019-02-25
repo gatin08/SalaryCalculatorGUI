@@ -15,7 +15,7 @@ class SalaryTest {
 		double[] outputValues = salaryClass.Calculate(10000);
 		
 		//Проверка решенного примера с полученными значениями
-		assertArrayEquals(new double[] { 8700, 1300, 3020 }, outputValues);
+		assertArrayEquals(new double[] { 8700000, 1300000, 3020000 }, outputValues);
 	}
 	
 	@Test
@@ -25,7 +25,7 @@ class SalaryTest {
 		double[] outputValues = salaryClass.Calculate(20000);
 		
 		//Проверка решенного примера с полученными значениями
-		assertArrayEquals(new double[] { 17400, 2600, 6040 }, outputValues);
+		assertArrayEquals(new double[] { 17400000, 2600000, 6040000 }, outputValues);
 	}
 
 }
