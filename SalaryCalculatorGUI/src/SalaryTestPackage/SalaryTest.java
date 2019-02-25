@@ -12,7 +12,7 @@ class SalaryTest {
 	void test1() {
 		SalaryClass salaryClass = new SalaryClass();
 		//Задание входного значения
-		double[] outputValues = salaryClass.Calculate(10000);
+		double[] outputValues = salaryClass.Calculate(1000000);
 		
 		//Проверка решенного примера с полученными значениями
 		assertArrayEquals(new double[] { 8700000, 1300000, 3020000 }, outputValues);
