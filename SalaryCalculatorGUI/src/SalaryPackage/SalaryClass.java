@@ -1,8 +1,21 @@
 package SalaryPackage;
 
-public class SalaryClass {
-	public double[] Calculate(double input) {
-		//Заглушка: за реализацию класса расчёта отвечает Юрий Истомин 
-		return new double[] { 0, 0, 0 };
-	}
+	public class SalaryClass {
+
+		public double[] Calculate(double input) {
+
+				double _pit = 0.5; //Personal income tax, подоходный налог
+
+				double _ipt = 0.5; //Insurance premium tax, страховые взносы
+
+				double employeeTax = input * _pit; //Подоходный налог
+
+				double salary = input - employeeTax; //Который вычитается из зарплаты
+
+				double employeerTax = input * _ipt; //Взносы, уплоченные работодателем
+
+				return new double[] { salary, employeeTax, employeerTax };
+
+		}
+
 }
