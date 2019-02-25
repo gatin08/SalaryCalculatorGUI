@@ -4,17 +4,17 @@ package SalaryPackage;
 
 		public double[] Calculate(double input) {
 
-				double _pit = 0.5; //Personal income tax, подоходный налог
+			double _pit = 0.13; //Personal income tax, подоходный налог
 
-				double _ipt = 0.5; //Insurance premium tax, страховые взносы
+			double _ipt = 0.302; //Insurance premium tax, страховые взносы
 
-				double employeeTax = input * _pit; //Подоходный налог
+			double employeeTax = input * _pit; //Подоходный налог
 
-				double salary = input - employeeTax; //Который вычитается из зарплаты
+			double salary = input - employeeTax; //Который вычитается из зарплаты
 
-				double employeerTax = input * _ipt; //Взносы, уплоченные работодателем
+			double employeerTax = input * _ipt; //Взносы, уплоченные работодателем
 
-				return new double[] { salary, employeeTax, employeerTax };
+			return new double[] { salary, employeeTax, employeerTax };
 
 		}
 
