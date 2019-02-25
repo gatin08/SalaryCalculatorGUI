@@ -22,6 +22,8 @@ public class SalaryWindow {
 	private JTextField textFieldIPT;
 	private JButton buttonCalculate;
 	
+	private SalaryClass salaryClass;
+
 	/**
 	 * Launch the application.
 	 */
@@ -43,7 +45,7 @@ public class SalaryWindow {
 	 */
 	public SalaryWindow() {
 		initialize();
-		//Заглушка: за создание связи с классом отвечает Роман Гатин				
+		salaryClass = new SalaryClass();				
 	}
 	
 	private void changedEvent(DocumentEvent de) {
@@ -62,7 +64,7 @@ public class SalaryWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setTitle("Зарплатный калькулятор");
+		frame.setTitle("Р—Р°СЂРїР»Р°С‚РЅС‹Р№ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂ");
 		frame.setBounds(100, 100, 450, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -71,19 +73,19 @@ public class SalaryWindow {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Размер зарплаты до вычета налогов");
+		JLabel lblNewLabel = new JLabel("Р Р°Р·РјРµСЂ Р·Р°СЂРїР»Р°С‚С‹ РґРѕ РІС‹С‡РµС‚Р° РЅР°Р»РѕРіРѕРІ");
 		lblNewLabel.setBounds(12, 12, 342, 15);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Размер зарплаты после вычета налогов");
+		JLabel lblNewLabel_1 = new JLabel("Р Р°Р·РјРµСЂ Р·Р°СЂРїР»Р°С‚С‹ РїРѕСЃР»Рµ РІС‹С‡РµС‚Р° РЅР°Р»РѕРіРѕРІ");
 		lblNewLabel_1.setBounds(12, 78, 342, 15);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("НДФЛ 13%, уплаченный работником");
+		JLabel lblNewLabel_2 = new JLabel("РќР”Р¤Р› 13%, СѓРїР»Р°С‡РµРЅРЅС‹Р№ СЂР°Р±РѕС‚РЅРёРєРѕРј");
 		lblNewLabel_2.setBounds(12, 105, 342, 15);
 		panel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Взносы в фонды, уплаченные работодателем");
+		JLabel lblNewLabel_3 = new JLabel("Р’Р·РЅРѕСЃС‹ РІ С„РѕРЅРґС‹, СѓРїР»Р°С‡РµРЅРЅС‹Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј");
 		lblNewLabel_3.setBounds(12, 132, 342, 15);
 		panel.add(lblNewLabel_3);
 		
@@ -127,10 +129,28 @@ public class SalaryWindow {
 		panel.add(textFieldIPT);
 		textFieldIPT.setColumns(10);
 		
-		buttonCalculate = new JButton("Рассчитать");
+		buttonCalculate = new JButton("Р Р°СЃСЃС‡РёС‚Р°С‚СЊ");
+		buttonCalculate.setEnabled(false);
+		buttonCalculate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {		    
+					textFieldSalary.setText("");
+					textFieldPIT.setText("");
+					textFieldIPT.setText("");
+					
+					double input = Double.parseDouble(textFieldInput.getText());
+					double[] output = salaryClass.Calculate(input);
+					
+					textFieldSalary.setText(String.valueOf(output[0]));
+					textFieldPIT.setText(String.valueOf(output[1]));
+					textFieldIPT.setText(String.valueOf(output[2]));
+					
+				} catch (NumberFormatException ex) {
+				}
+			}
+		});
 		buttonCalculate.setBounds(12, 39, 418, 25);
 		panel.add(buttonCalculate);
 	}
-}
-
+}	
 
