@@ -3,15 +3,25 @@ package SalaryPackage;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
-import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SalaryWindow {
 
 	private JFrame frame;
-
+	private JTextField textFieldInput;
+	private JTextField textFieldSalary;
+	private JTextField textFieldPIT;
+	private JTextField textFieldIPT;
+	private JButton buttonCalculate;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -33,21 +43,66 @@ public class SalaryWindow {
 	 */
 	public SalaryWindow() {
 		initialize();
-		//Р—Р°РіР»СѓС€РєР°: Р·Р° СЃРѕР·РґР°РЅРёРµ СЃРІСЏР·Рё СЃ РєР»Р°СЃСЃРѕРј РѕС‚РІРµС‡Р°РµС‚ Р РѕРјР°РЅ Р“Р°С‚РёРЅ
-	}
+		//Заглушка: за создание связи с классом отвечает Роман Гатин				
+	}	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setTitle("Зарплатный калькулятор");
+		frame.setBounds(100, 100, 450, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		//Р—Р°РіР»СѓС€РєР°: Р·Р° СЂРµР°Р»РёР·Р°С†РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР° РѕС‚РІРµС‡Р°РµС‚ РўРёРјСѓСЂ РЎР°С„РёРЅ
-		JLabel label = new JLabel("Р—Р°РіР»СѓС€РєР°: Р·Р° СЂРµР°Р»РёР·Р°С†РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР° РѕС‚РІРµС‡Р°РµС‚ РўРёРјСѓСЂ РЎР°С„РёРЅ");
-		label.setFont(new Font("Dialog", Font.BOLD, 9));
-		frame.getContentPane().add(label, BorderLayout.NORTH);
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Размер зарплаты до вычета налогов");
+		lblNewLabel.setBounds(12, 12, 342, 15);
+		panel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Размер зарплаты после вычета налогов");
+		lblNewLabel_1.setBounds(12, 78, 342, 15);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("НДФЛ 13%, уплаченный работником");
+		lblNewLabel_2.setBounds(12, 105, 342, 15);
+		panel.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Взносы в фонды, уплаченные работодателем");
+		lblNewLabel_3.setBounds(12, 132, 342, 15);
+		panel.add(lblNewLabel_3);
+		
+		textFieldInput = new JTextField();
+		textFieldInput.setBounds(372, 10, 58, 19);
+		panel.add(textFieldInput);
+		textFieldInput.setColumns(10);
+		
+		
+		textFieldSalary = new JTextField();
+		textFieldSalary.setEditable(false);
+		textFieldSalary.setBounds(372, 76, 58, 19);
+		panel.add(textFieldSalary);
+		textFieldSalary.setColumns(10);
+		
+		textFieldPIT = new JTextField();
+		textFieldPIT.setEditable(false);
+		textFieldPIT.setBounds(372, 103, 58, 19);
+		panel.add(textFieldPIT);
+		textFieldPIT.setColumns(10);
+		
+		textFieldIPT = new JTextField();
+		textFieldIPT.setEditable(false);
+		textFieldIPT.setBounds(372, 130, 58, 19);
+		panel.add(textFieldIPT);
+		textFieldIPT.setColumns(10);
+		
+		buttonCalculate = new JButton("Рассчитать");		
+		buttonCalculate.setBounds(12, 39, 418, 25);
+		panel.add(buttonCalculate);
 	}
-
 }
+
