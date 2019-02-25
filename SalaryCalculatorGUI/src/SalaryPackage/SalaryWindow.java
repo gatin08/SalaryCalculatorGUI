@@ -22,6 +22,8 @@ public class SalaryWindow {
 	private JTextField textFieldIPT;
 	private JButton buttonCalculate;
 	
+	private SalaryClass salaryClass;
+
 	/**
 	 * Launch the application.
 	 */
@@ -132,9 +134,16 @@ public class SalaryWindow {
 		buttonCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {		    
-					textFieldSalary.setText("1");
-					textFieldPIT.setText("2");
-					textFieldIPT.setText("3");									
+					textFieldSalary.setText("");
+					textFieldPIT.setText("");
+					textFieldIPT.setText("");
+					
+					double input = Double.parseDouble(textFieldInput.getText());
+					double[] output = salaryClass.Calculate(input);
+					
+					textFieldSalary.setText(String.valueOf(output[0]));
+					textFieldPIT.setText(String.valueOf(output[1]));
+					textFieldIPT.setText(String.valueOf(output[2]));
 					
 				} catch (NumberFormatException ex) {
 				}
@@ -143,4 +152,4 @@ public class SalaryWindow {
 		buttonCalculate.setBounds(12, 39, 418, 25);
 		panel.add(buttonCalculate);
 	}
-}
+}	
