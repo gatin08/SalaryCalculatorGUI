@@ -44,7 +44,18 @@ public class SalaryWindow {
 	public SalaryWindow() {
 		initialize();
 		//Заглушка: за создание связи с классом отвечает Роман Гатин				
-	}	
+	}
+	
+	private void changedEvent(DocumentEvent de) {
+		if (this.textFieldInput.getText().length() > 0)
+		{
+			this.buttonCalculate.setEnabled(true);
+		}
+		else
+		{
+			this.buttonCalculate.setEnabled(false);
+		}
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -80,7 +91,23 @@ public class SalaryWindow {
 		textFieldInput.setBounds(372, 10, 58, 19);
 		panel.add(textFieldInput);
 		textFieldInput.setColumns(10);
-		
+		textFieldInput.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				changedEvent(e);
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				changedEvent(e);
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				changedEvent(e);
+			}				
+		});
 		
 		textFieldSalary = new JTextField();
 		textFieldSalary.setEditable(false);
@@ -100,9 +127,10 @@ public class SalaryWindow {
 		panel.add(textFieldIPT);
 		textFieldIPT.setColumns(10);
 		
-		buttonCalculate = new JButton("Рассчитать");		
+		buttonCalculate = new JButton("Рассчитать");
 		buttonCalculate.setBounds(12, 39, 418, 25);
 		panel.add(buttonCalculate);
 	}
 }
+
 
